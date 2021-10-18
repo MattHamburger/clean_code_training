@@ -2,7 +2,7 @@
 
 Feature   | Description
 -------   | ----------------------------------------------------------------------------------------
-One       | <Write Feature One's Description>
-Two       | <Write Feature Two's Description>
-Three     | <Write Feature Three's Description>
-Four      | <Write Feature Four's Description>
+One       | <What is Feature 1 doing?>
+Two       | <What is Feature 2 doing?>
+Three     | <What is Feature 3 doing?>
+Four      | <What is Feature 4 doing?>
