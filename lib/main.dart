@@ -17,7 +17,15 @@ class TrainingApp extends StatelessWidget {
       onBuild: (context, _) {},
       child: MaterialApp.router(
         title: 'Training App',
-        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: ZoomPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+        ),
         routerDelegate: appRouter.routerDelegate,
         routeInformationParser: appRouter.routeInformationParser,
       ),
