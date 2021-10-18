@@ -10,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  clean_framework:
+    git:
+      url: git@github.com:MattHamburger/flutter_clean_framework.git
+  go_router: ^2.1.2
 
 dev_dependencies:
   flutter_test:
