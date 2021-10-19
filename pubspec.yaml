@@ -12,7 +12,8 @@ dependencies:
     sdk: flutter
   clean_framework:
     git:
-      url: git@github.com:MattHamburger/flutter_clean_framework.git
+      url: git@github.com:MattHamburger/clean_framework.git
+      ref: main
   go_router: ^2.1.2
 
 dev_dependencies:
