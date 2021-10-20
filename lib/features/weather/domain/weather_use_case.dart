@@ -9,8 +9,6 @@ class WeatherUseCase extends UseCase<WeatherEntity> {
           outputFilters: {
             WeatherUIOutput: (WeatherEntity entity) => WeatherUIOutput(
                   isLoading: entity.isLoading,
-                  selectedContinentId: entity.selectedContinentId,
-                  continents: entity.continents,
                   weatherList: entity.weatherList,
                 ),
           },
@@ -31,7 +29,18 @@ class WeatherUseCase extends UseCase<WeatherEntity> {
       onSuccess: (successInput) => entity.merge(
         weatherList: successInput.weatherList,
         isLoading: false,
-        continentId: _cityName,
+        cities: [cityName],
+      ),
+      onFailure: (failure) => entity.merge(isLoading: false),
+    );
+  }
+
+  Future<void> addWeather({required String cityName}) async {
+    return request<WeatherGatewayOutput, WeatherSuccessInput>(
+      WeatherGatewayOutput(cityName: cityName),
+      onSuccess: (successInput) => entity.merge(
+        weatherList: successInput.weatherList,
+        isLoading: false,
       ),
       onFailure: (failure) => entity.merge(isLoading: false),
     );
@@ -42,18 +51,17 @@ class WeatherUIOutput extends Output {
   WeatherUIOutput({
     required this.isLoading,
     required this.weatherList,
-    required this.continents,
-    required this.selectedContinentId,
   });
 
   final bool isLoading;
   final List<WeatherModel> weatherList;
-  final Map<String, String> continents;
-  final String selectedContinentId;
 
   @override
   List<Object?> get props {
-    return [isLoading, weatherList, continents, selectedContinentId];
+    return [
+      isLoading,
+      weatherList,
+    ];
   }
 }
 

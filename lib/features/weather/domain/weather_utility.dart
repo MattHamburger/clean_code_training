@@ -5,31 +5,31 @@ class WeatherEntity extends Entity {
   WeatherEntity({
     this.isLoading = false,
     this.weatherList = const [],
-    this.continents = const {},
-    this.selectedContinentId = 'AS', // AS is country code for Asia.
+    this.cities = const [],
   });
 
   final bool isLoading;
   final List<WeatherModel> weatherList;
-  final Map<String, String> continents;
-  final String selectedContinentId;
+  final List<String> cities;
 
   @override
   List<Object?> get props {
-    return [isLoading, weatherList, continents, selectedContinentId];
+    return [
+      isLoading,
+      weatherList,
+      cities,
+    ];
   }
 
   WeatherEntity merge({
     bool? isLoading,
     List<WeatherModel>? weatherList,
-    Map<String, String>? continents,
-    String? continentId,
+    List<String>? cities,
   }) {
     return WeatherEntity(
       isLoading: isLoading ?? this.isLoading,
       weatherList: weatherList ?? this.weatherList,
-      continents: continents ?? this.continents,
-      selectedContinentId: continentId ?? selectedContinentId,
+      cities: cities ?? this.cities,
     );
   }
 }
