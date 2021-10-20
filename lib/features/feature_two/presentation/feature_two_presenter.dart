@@ -1,5 +1,3 @@
-import 'package:clean_code_training/features/feature_one/domain/feature_one_use_case.dart';
-import 'package:clean_code_training/features/feature_one/domain/feature_one_view_model.dart';
 import 'package:clean_code_training/features/feature_two/domain/feature_two_use_case.dart';
 import 'package:clean_code_training/features/feature_two/domain/feature_two_view_model.dart';
 import 'package:clean_code_training/providers.dart';

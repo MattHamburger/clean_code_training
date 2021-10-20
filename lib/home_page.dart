@@ -16,8 +16,8 @@ class HomePage extends StatelessWidget {
         children: [
           ListTile(
             leading: const Icon(Icons.filter_1),
-            title: const Text('Feature One'),
-            onTap: () => context.push(Routes.one),
+            title: const Text('Weather App'),
+            onTap: () => context.push(Routes.weather),
           ),
           const Divider(),
           ListTile(
