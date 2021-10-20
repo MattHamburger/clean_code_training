@@ -1,4 +1,3 @@
-import 'package:clean_code_training/features/feature_one/domain/feature_one_entity.dart';
 import 'package:clean_code_training/features/feature_two/domain/feature_two_entity.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 

@@ -6,6 +6,8 @@ import 'package:clean_code_training/features/feature_three/domain/feature_three_
 import 'package:clean_code_training/features/feature_three/domain/feature_three_use_case.dart';
 import 'package:clean_code_training/features/feature_two/domain/feature_two_entity.dart';
 import 'package:clean_code_training/features/feature_two/domain/feature_two_use_case.dart';
+import 'package:clean_code_training/features/rick_morty/domain/rick_morty_entity.dart';
+import 'package:clean_code_training/features/rick_morty/domain/rick_morty_use_case.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 
@@ -31,4 +33,9 @@ final featureThreeUseCaseProvider =
 final featureFourUseCaseProvider =
     UseCaseProvider<FeatureFourEntity, FeatureFourUseCase>(
   (_) => FeatureFourUseCase(),
+);
+
+final rickMortyUseCaseProvider =
+    UseCaseProvider<RickMortyEntity, RickMortyUseCase>(
+  (_) => RickMortyUseCase(),
 );

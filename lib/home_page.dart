@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.filter_4),
-            title: const Text('Feature Four'),
+            title: const Text('Rick And Morty'),
             onTap: () => context.push(Routes.four),
           ),
         ],
