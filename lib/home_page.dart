@@ -37,6 +37,12 @@ class HomePage extends StatelessWidget {
             title: const Text('Feature Four'),
             onTap: () => context.push(Routes.four),
           ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.filter_5),
+            title: const Text('Weather'),
+            onTap: () => context.push(Routes.weather),
+          ),
         ],
       ),
     );

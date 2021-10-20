@@ -9,6 +9,9 @@ import 'package:clean_code_training/features/feature_two/domain/feature_two_use_
 import 'package:clean_framework/clean_framework.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 
+import 'features/weather/domain/weather_entity.dart';
+import 'features/weather/domain/weather_use_case.dart';
+
 ProvidersContext _providersContext = ProvidersContext();
 
 ProvidersContext get providersContext => _providersContext;
@@ -31,4 +34,9 @@ final featureThreeUseCaseProvider =
 final featureFourUseCaseProvider =
     UseCaseProvider<FeatureFourEntity, FeatureFourUseCase>(
   (_) => FeatureFourUseCase(),
+);
+
+final weatherUseCaseProvider =
+UseCaseProvider<WeatherEntity, WeatherUseCase>(
+        (_) => WeatherUseCase(),
 );
