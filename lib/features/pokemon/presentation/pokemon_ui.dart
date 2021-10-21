@@ -1,10 +1,11 @@
+import 'package:clean_code_training/features/pokemon/domain/pokemon_model.dart';
 import 'package:clean_code_training/features/pokemon/domain/pokemon_view_model.dart';
 import 'package:clean_code_training/features/pokemon/presentation/pokemon_presenter.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
 
 class PokemonUI extends UI<PokemonViewModel> {
-  PokemonUI({Key? key}) : super(key: key);
+  PokemonUI({Key? key, PresenterCreator<PokemonViewModel>? create}) : super(key: key, create: create);
 
   @override
   Presenter<ViewModel, Output, UseCase<Entity>> create(
@@ -14,23 +15,25 @@ class PokemonUI extends UI<PokemonViewModel> {
   }
 
   @override
-  Widget build(BuildContext context, PokemonViewModel viewModel) {
+  Widget build(BuildContext context, PokemonViewModel model) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pokemon Feature'),
       ),
       body: _PokemonListWidget(
-        isLoading: false,
+        isLoading: model.isLoading,
         child: RefreshIndicator(
             onRefresh: () async {},
             child: ListView.builder(
-                itemCount: 3,
+                itemCount: model.pokemons.length,
                 itemBuilder: (context, index) {
-                  return const PokemonCardWidget(
-                    image: 'https://img.pokemondb.net/artwork/bulbasaur.jpg',
-                    number: '001',
-                    name: 'Bulbasaur',
-                    classification: 'Seed Pokemon',
+                  final PokemonModel pokemon = model.pokemons[index];
+
+                  return PokemonCardWidget(
+                    image: pokemon.image,
+                    number: pokemon.number,
+                    name: pokemon.name,
+                    classification: pokemon.classification,
                   );
                 }))));
   }
