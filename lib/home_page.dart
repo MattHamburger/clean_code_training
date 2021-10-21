@@ -16,9 +16,15 @@ class HomePage extends StatelessWidget {
         children: [
           ListTile(
             leading: const Icon(Icons.filter_1),
-            title: const Text('Feature One'),
-            onTap: () => context.push(Routes.one),
+            title: const Text('Pokemon Feature'),
+            onTap: () => context.push(Routes.pokemon),
           ),
+          // const Divider(),
+          // ListTile(
+          //   leading: const Icon(Icons.filter_1),
+          //   title: const Text('Feature One'),
+          //   onTap: () => context.push(Routes.one),
+          // ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.filter_2),

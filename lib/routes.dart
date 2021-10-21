@@ -2,6 +2,7 @@ import 'package:clean_code_training/features/feature_four/presentation/feature_f
 import 'package:clean_code_training/features/feature_one/presentation/feature_one_ui.dart';
 import 'package:clean_code_training/features/feature_three/presentation/feature_three_ui.dart';
 import 'package:clean_code_training/features/feature_two/presentation/feature_two_ui.dart';
+import 'package:clean_code_training/features/pokemon/presentation/pokemon_ui.dart';
 import 'package:clean_code_training/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +13,7 @@ class Routes {
   static const String two = '/two';
   static const String three = '/three';
   static const String four = '/four';
+  static const String pokemon = '/pokemon';
 }
 
 final appRouter = GoRouter(
@@ -58,6 +60,15 @@ final appRouter = GoRouter(
         return MaterialPage(
           key: state.pageKey,
           child: FeatureFourUI(),
+        );
+      },
+    ),
+    GoRoute(
+      path: Routes.pokemon,
+      pageBuilder: (context, state) {
+        return MaterialPage(
+          key: state.pageKey,
+          child: PokemonUI(),
         );
       },
     ),
