@@ -72,17 +72,14 @@ class PokemonCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
+        margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 12.0),
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
             border: Border.all(color: Colors.blueGrey),
             borderRadius: BorderRadius.circular(5.0)),
         child: Row(children: [
-          ClipRRect(
-              borderRadius: BorderRadius.circular(40.0),
-              child: Image.network(image,
-                  height: 80.0, width: 80.0, fit: BoxFit.cover)),
-          const SizedBox(width: 32.0),
+          Image.network(image, height: 50.0, width: 50.0, fit: BoxFit.cover),
+          const SizedBox(width: 24.0),
           Expanded(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
