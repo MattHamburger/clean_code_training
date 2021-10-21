@@ -81,7 +81,7 @@ class PokemonCardWidget extends StatelessWidget {
             border: Border.all(color: Colors.blueGrey),
             borderRadius: BorderRadius.circular(5.0)),
         child: Row(children: [
-          Image.network(image, height: 50.0, width: 50.0, fit: BoxFit.cover),
+          // Image.network(image, height: 50.0, width: 50.0, fit: BoxFit.cover),
           const SizedBox(width: 24.0),
           Expanded(
               child: Column(

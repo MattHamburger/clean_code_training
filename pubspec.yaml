@@ -22,3 +22,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+assets:
+  - test/features/pokemon/presentation/assets/bulbasaur.jpeg
+  - test/features/pokemon/presentation/assets/ivysaur.jpeg
+  - test/features/pokemon/presentation/assets/venusaur.jpeg
