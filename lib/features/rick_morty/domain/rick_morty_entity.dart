@@ -1,20 +1,12 @@
+import 'package:clean_code_training/features/rick_morty/domain/rick_morty_input_model.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 
 class RickMortyEntity extends Entity {
-  
   final bool isLoading;
-  final String name;
-  final String status;
-  final String species;
-  final String gender;
+  final List<RickMortyCharacterInputModel> characters;
 
-  RickMortyEntity(
-      {this.isLoading = false,
-      this.name = "",
-      this.status = "",
-      this.species = "",
-      this.gender = ""});
+  RickMortyEntity({this.isLoading = false, this.characters = const []});
 
   @override
-  List<Object?> get props => [isLoading, name, status, species, gender];
+  List<Object?> get props => [isLoading, characters];
 }

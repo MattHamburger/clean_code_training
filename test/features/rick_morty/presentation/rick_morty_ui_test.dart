@@ -5,34 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final response = {
-    "data": {
-      "characters": {
-        "results": [
-          {
-            "name": "Rick Sanchez",
-            "status": "Alive",
-            "species": "Human",
-            "gender": "Male"
-          }
-        ]
-      }
-    }
-  };
 
-  group('Page Displays Character Data', () {
-    uiTest('list characters',
-        context: providersContext,
-        builder: () => RickMortyUI(),
-        verify: (tester) async {
-          await tester.pumpAndSettle();
-          final data = response['data'];
-          final characters = data?['characters'];
-          final results = characters?['results'];
-
-          expect(results?.isNotEmpty, true);
-        });
-
+  group('Listing Page Tests', () {
     uiTest('My widget has an image, title, name, species, gender and status',
         context: providersContext,
         builder: () => RickMortyUI(),

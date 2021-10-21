@@ -1,3 +1,5 @@
+import 'package:clean_code_training/features/rick_morty/domain/rick_morty_input_model.dart';
+import 'package:clean_code_training/features/rick_morty/domain/rick_morty_use_case.dart';
 import 'package:clean_code_training/features/rick_morty/presentation/rick_morty_view_model.dart';
 import 'package:clean_code_training/features/rick_morty/presentation/rick_morty_presenter.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
@@ -8,23 +10,35 @@ class RickMortyUI extends UI<RickMortyViewModel> {
   RickMortyUI({Key? key}) : super(key: key);
 
   @override
-  Presenter<ViewModel, Output, UseCase<Entity>> create(
-      PresenterBuilder<RickMortyViewModel> builder) {
-    return RickMortyPresenter(builder: builder);
+  Presenter<ViewModel, Output, UseCase<Entity>> create(PresenterBuilder<RickMortyViewModel> builder) {
+    return MockRickMortyPresenter(builder: builder);
   }
 
   @override
   Widget build(BuildContext context, RickMortyViewModel viewModel) {
     return Scaffold(
       appBar: AppBar(title: const Text('Rick And Morty Characters')),
-      body: _CharacterListWidget(isLoading: false,
+      body: _CharacterListWidget(isLoading: viewModel.isLoading,
         child: RefreshIndicator(onRefresh: () async {},
-          child: ListView.builder(itemCount: 1, itemBuilder: (context, index) {
-            return CharacterCardWidget(characterImage: 'assets/rickandmorty.jpeg', characterName: viewModel.name, 
-            characterSpecies: viewModel.species, characterGender: viewModel.gender, 
-            characterStatus: viewModel.status);
+          child: ListView.builder(itemCount: viewModel.characters.length, itemBuilder: (context, index) {
+            return CharacterCardWidget(characterImage: 'assets/rickandmorty.jpeg', characterName: viewModel.characters[index].name, 
+            characterSpecies: viewModel.characters[index].species, characterGender: viewModel.characters[index].gender, 
+            characterStatus: viewModel.characters[index].status);
     }))));
   }
+}
+
+class MockRickMortyPresenter extends RickMortyPresenter {
+  MockRickMortyPresenter({required PresenterBuilder<RickMortyViewModel> builder})
+      : super(builder: builder);
+
+  @override
+  RickMortyUIOutput subscribe(_) =>
+      RickMortyUIOutput(
+          isLoading: false,
+          characters: [
+            RickMortyCharacterInputModel(name: 'Rick Sanchez', gender: 'Male', species: 'Human', status: 'Alive')
+          ]);
 }
 
 class _CharacterListWidget extends StatelessWidget {
@@ -67,10 +81,10 @@ class CharacterCardWidget extends StatelessWidget {
     switch (status) {
       case 'unknown':
         return const Text('Unknown', style: TextStyle(fontSize: 14.0, color: Colors.grey));
-      case 'Alive':
-        return const Text('Alive', style: TextStyle(fontSize: 14.0, color: Colors.green));
       case 'Dead':
         return const Text('Dead', style: TextStyle(fontSize: 14.0, color: Colors.red));
+      case 'Alive':
+        return const Text('Alive', style: TextStyle(fontSize: 14.0, color: Colors.green));
       default:
         return const Text('Unknown', style: TextStyle(fontSize: 14.0, color: Colors.grey));
     }

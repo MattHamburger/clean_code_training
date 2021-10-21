@@ -3,12 +3,22 @@ import 'package:clean_code_training/features/rick_morty/presentation/rick_morty_
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 
-class RickMortyPresenter extends Presenter<RickMortyViewModel, RickMortyUIOutput, RickMortyUseCase> {
-  
-  RickMortyPresenter({required PresenterBuilder<RickMortyViewModel> builder}) : super(builder: builder, provider: rickMortyUseCaseProvider);
+class RickMortyPresenter
+    extends Presenter<RickMortyViewModel, RickMortyUIOutput, RickMortyUseCase> {
+  RickMortyPresenter({required PresenterBuilder<RickMortyViewModel> builder})
+      : super(builder: builder, provider: rickMortyUseCaseProvider);
 
   @override
-  RickMortyViewModel createViewModel(RickMortyUseCase useCase, RickMortyUIOutput output) {
-    return RickMortyViewModel(isLoading: false, name: 'Rick Sanchez', status: 'Alive', species: 'Human', gender: 'Male');
+  RickMortyViewModel createViewModel(
+      RickMortyUseCase useCase, RickMortyUIOutput output) {
+    return RickMortyViewModel(
+        isLoading: output.isLoading,
+        characters: output.characters
+            .map((c) => SingleCharacterViewModel(
+                name: c.name,
+                species: c.species,
+                status: c.status,
+                gender: c.gender))
+            .toList());
   }
 }
