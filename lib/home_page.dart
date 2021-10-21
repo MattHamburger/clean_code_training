@@ -14,29 +14,13 @@ class HomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 16),
         children: [
-          ListTile(
-            leading: const Icon(Icons.filter_1),
-            title: const Text('Feature One'),
-            onTap: () => context.push(Routes.one),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.filter_2),
-            title: const Text('Feature Two'),
-            onTap: () => context.push(Routes.two),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.filter_3),
-            title: const Text('Feature Three'),
-            onTap: () => context.push(Routes.three),
-          ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.filter_4),
             title: const Text('Rick And Morty'),
-            onTap: () => context.push(Routes.four),
+            onTap: () => context.push(Routes.rickAndMorty),
           ),
+          const Divider()
         ],
       ),
     );
