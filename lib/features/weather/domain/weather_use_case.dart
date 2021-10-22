@@ -34,17 +34,6 @@ class WeatherUseCase extends UseCase<WeatherEntity> {
       onFailure: (failure) => entity.merge(isLoading: false),
     );
   }
-
-  Future<void> addWeather({required String cityName}) async {
-    return request<WeatherGatewayOutput, WeatherSuccessInput>(
-      WeatherGatewayOutput(cityName: cityName),
-      onSuccess: (successInput) => entity.merge(
-        weatherList: successInput.weatherList,
-        isLoading: false,
-      ),
-      onFailure: (failure) => entity.merge(isLoading: false),
-    );
-  }
 }
 
 class WeatherUIOutput extends Output {

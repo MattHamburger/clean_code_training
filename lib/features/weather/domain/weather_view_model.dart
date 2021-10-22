@@ -4,15 +4,11 @@ class WeatherViewModel extends ViewModel {
   WeatherViewModel({
     this.isLoading = false,
     this.weatherList = const [],
-    this.continents = const {},
-    this.selectedContinentId = 'San Francisco',
     required this.fetchWeather,
   });
 
   final bool isLoading;
   final List<SingleWeatherViewModel> weatherList;
-  final Map<String, String> continents;
-  final String selectedContinentId;
   final Future<void> Function({
     required String cityName,
     bool isRefresh,
@@ -20,13 +16,7 @@ class WeatherViewModel extends ViewModel {
 
   @override
   List<Object?> get props {
-    return [
-      isLoading,
-      weatherList,
-      continents,
-      selectedContinentId,
-      fetchWeather
-    ];
+    return [isLoading, weatherList, fetchWeather];
   }
 }
 
