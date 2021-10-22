@@ -9,4 +9,11 @@ class RickMortyEntity extends Entity {
 
   @override
   List<Object?> get props => [isLoading, characters];
+
+  RickMortyEntity merge(
+      {bool? isLoading, List<RickMortyCharacterInputModel>? characters}) {
+    return RickMortyEntity(
+        isLoading: isLoading ?? this.isLoading,
+        characters: characters ?? this.characters);
+  }
 }

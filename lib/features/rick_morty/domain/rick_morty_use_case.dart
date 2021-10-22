@@ -8,6 +8,16 @@ class RickMortyUseCase extends UseCase<RickMortyEntity> {
           RickMortyUIOutput: (RickMortyEntity entity) => RickMortyUIOutput(
               characters: entity.characters, isLoading: entity.isLoading)
         });
+
+  Future<void> fetch() async {
+    entity = entity.merge(isLoading: true);
+
+    return request<RickMortyGatewayOutput, RickMortySuccessInput>(
+        RickMortyGatewayOutput(),
+        onSuccess: (successInput) =>
+            entity.merge(isLoading: false, characters: successInput.characters),
+        onFailure: (failureInput) => entity.merge(isLoading: false));
+  }
 }
 
 class RickMortyUIOutput extends Output {
@@ -18,4 +28,25 @@ class RickMortyUIOutput extends Output {
 
   @override
   List<Object?> get props => [isLoading, characters];
+}
+
+class RickMortyGatewayOutput extends Output {
+  @override
+  List<Object?> get props => [];
+}
+
+class RickMortySuccessInput extends SuccessInput {
+  final List<RickMortyCharacterInputModel> characters;
+
+  RickMortySuccessInput({required this.characters});
+
+  factory RickMortySuccessInput.fromJson(Map<String, dynamic> json) {
+    return RickMortySuccessInput(
+        characters: List.of(json['characters']['results'] ?? [])
+            .map((c) => RickMortyCharacterInputModel.fromJson(c))
+            .toList(growable: false));
+  }
+
+  @override
+  List<Object?> get props => [characters];
 }

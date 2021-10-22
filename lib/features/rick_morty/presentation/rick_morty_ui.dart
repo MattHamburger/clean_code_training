@@ -1,7 +1,5 @@
-import 'package:clean_code_training/features/rick_morty/domain/rick_morty_input_model.dart';
-import 'package:clean_code_training/features/rick_morty/domain/rick_morty_use_case.dart';
-import 'package:clean_code_training/features/rick_morty/presentation/rick_morty_view_model.dart';
 import 'package:clean_code_training/features/rick_morty/presentation/rick_morty_presenter.dart';
+import 'package:clean_code_training/features/rick_morty/presentation/rick_morty_view_model.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +9,7 @@ class RickMortyUI extends UI<RickMortyViewModel> {
 
   @override
   Presenter<ViewModel, Output, UseCase<Entity>> create(PresenterBuilder<RickMortyViewModel> builder) {
-    return MockRickMortyPresenter(builder: builder);
+    return RickMortyPresenter(builder: builder);
   }
 
   @override
@@ -28,18 +26,6 @@ class RickMortyUI extends UI<RickMortyViewModel> {
   }
 }
 
-class MockRickMortyPresenter extends RickMortyPresenter {
-  MockRickMortyPresenter({required PresenterBuilder<RickMortyViewModel> builder})
-      : super(builder: builder);
-
-  @override
-  RickMortyUIOutput subscribe(_) =>
-      RickMortyUIOutput(
-          isLoading: false,
-          characters: [
-            RickMortyCharacterInputModel(name: 'Rick Sanchez', gender: 'Male', species: 'Human', status: 'Alive')
-          ]);
-}
 
 class _CharacterListWidget extends StatelessWidget {
   

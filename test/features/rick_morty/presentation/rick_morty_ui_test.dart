@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-
   group('Listing Page Tests', () {
     uiTest('My widget has an image, title, name, species, gender and status',
         context: providersContext,
