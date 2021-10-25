@@ -22,9 +22,9 @@ class WeatherUI extends UI<WeatherViewModel>{
           children: [
             SearchWeatherView(key: key,
               isLoading: viewModel.isLoading,
-              onPlaceNameSubmitted: (placeName){
-
-              },),
+              onPlaceNameSubmitted: (placeName) => viewModel.searchWeather(placeName) ,
+            ),
+            viewModel.isLoading ? const CircularProgressIndicator() : Container( height: 50,),
             Expanded(
               child: WeatherDetailsCard(
                 cityName: viewModel.cityName,
@@ -42,23 +42,7 @@ class WeatherUI extends UI<WeatherViewModel>{
 
   @override
   Presenter<ViewModel, Output, UseCase<Entity>> create(PresenterBuilder<WeatherViewModel> builder) {
-    return MockWeatherPresenter(builder:builder);
+    return WeatherPresenter(builder:builder);
   }
 
-}
-
-class MockWeatherPresenter extends WeatherPresenter {
-  MockWeatherPresenter({required PresenterBuilder<WeatherViewModel> builder})
-      : super(builder: builder);
-
-  @override
-  WeatherUIOutput subscribe(_) =>
-      WeatherUIOutput(
-          isLoading: false,
-          cityName: "Aluva",
-          countryName: "IN",
-          currentTemperature: "28 °C",
-          currentTemperatureDescription: "Haze",
-          currentHumidity: "74"
-      );
 }

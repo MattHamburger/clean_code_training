@@ -107,3 +107,4 @@ app.*.symbols
 *.g.dart
 **/lib/generated_plugin_registrant.dart
 
+**/genhtml.perl

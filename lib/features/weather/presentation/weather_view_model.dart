@@ -8,8 +8,14 @@ class WeatherViewModel extends ViewModel{
     required this.countryName,
     required this.currentTemperature,
     required this.currentTemperatureDescription,
-    required this.currentHumidity
-  });
+    required this.currentHumidity,
+    required this.searchWeather
+  }):
+          assert(cityName.isNotEmpty),
+          assert( countryName.isNotEmpty),
+          assert( currentTemperature.isNotEmpty),
+          assert(currentTemperatureDescription.isNotEmpty),
+          assert( currentHumidity.isNotEmpty);
 
   final bool isLoading;
   final String cityName;
@@ -18,7 +24,11 @@ class WeatherViewModel extends ViewModel{
   final String currentTemperatureDescription;
   final String currentHumidity;
 
+  final Function(String placeName) searchWeather;
+
   @override
-  List<Object?> get props => [isLoading,cityName,countryName,currentTemperature,currentTemperatureDescription,currentHumidity];
+  List<Object> get props =>
+      [isLoading ,cityName,countryName,currentTemperature,currentTemperatureDescription,currentHumidity];
+
 
 }
