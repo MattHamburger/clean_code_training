@@ -1,6 +1,5 @@
 import 'package:clean_code_training/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,26 +16,9 @@ class HomePage extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.filter_1),
             title: const Text('Feature One'),
-            onTap: () => context.push(Routes.one),
+            onTap: () => router.to(Routes.payments),
           ),
           const Divider(),
-          ListTile(
-            leading: const Icon(Icons.filter_2),
-            title: const Text('Feature Two'),
-            onTap: () => context.push(Routes.two),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.filter_3),
-            title: const Text('Feature Three'),
-            onTap: () => context.push(Routes.three),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.filter_4),
-            title: const Text('Feature Four'),
-            onTap: () => context.push(Routes.four),
-          ),
         ],
       ),
     );

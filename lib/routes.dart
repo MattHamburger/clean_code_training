@@ -1,34 +1,42 @@
+import 'package:clean_code_training/features/payments/ui/payments_widget.dart';
 import 'package:clean_code_training/home_page.dart';
+import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class Routes {
-  static const String home = '/';
-  static const String one = '/one';
-  static const String two = '/two';
-  static const String three = '/three';
-  static const String four = '/four';
+enum Routes {
+  home,
+  payments,
 }
 
-final appRouter = GoRouter(
+final router = AppRouter<Routes>(
   routes: [
-    GoRoute(
-      path: Routes.home,
-      pageBuilder: (context, state) {
-        return MaterialPage(
-          key: state.pageKey,
-          child: const HomePage(),
-        );
-      },
+    AppRoute(
+      name: Routes.home,
+      path: '/',
+      builder: (context, state) => HomePage(),
+      routes: [
+        AppRoute(
+          name: Routes.payments,
+          path: 'last-login',
+          builder: (context, state) => PaymentsPage(),
+        ),
+      ],
     ),
   ],
-  errorPageBuilder: (context, state) {
-    return const MaterialPage(
-      child: Scaffold(
-        body: Center(
-          child: Text('Route Not Found!'),
-        ),
+  errorBuilder: (context, state) => Page404(error: state.error),
+);
+
+class Page404 extends StatelessWidget {
+  const Page404({Key? key, required this.error}) : super(key: key);
+
+  final Exception? error;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(error.toString()),
       ),
     );
-  },
-);
+  }
+}
