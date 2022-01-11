@@ -5,6 +5,13 @@ class PaymentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Payments'),
+      ),
+      body: const Center(
+        child: Text("Payments UI"),
+      ),
+    );
   }
 }
