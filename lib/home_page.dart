@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         children: [
           ListTile(
             leading: const Icon(Icons.filter_1),
-            title: const Text('Feature One'),
+            title: const Text('Payment feature'),
             onTap: () => router.to(Routes.payments),
           ),
           const Divider(),

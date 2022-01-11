@@ -1,7 +1,9 @@
-import 'package:clean_code_training/features/payments/ui/payments_widget.dart';
+
 import 'package:clean_code_training/home_page.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
+
+import 'features/age/ui/age_widget.dart';
 
 enum Routes {
   home,
@@ -18,7 +20,7 @@ final router = AppRouter<Routes>(
         AppRoute(
           name: Routes.payments,
           path: 'last-login',
-          builder: (context, state) => PaymentsPage(),
+          builder: (context, state) => AgePage(),
         ),
       ],
     ),
