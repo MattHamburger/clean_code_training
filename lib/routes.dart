@@ -10,7 +10,7 @@ import 'features/age_feature/presentation/age_page.dart';
 
 enum Routes {
   home,
-  payments,
+  age,
 }
 
 final router = AppRouter<Routes>(
@@ -21,7 +21,7 @@ final router = AppRouter<Routes>(
       builder: (context, state) => HomePage(),
       routes: [
         AppRoute(
-          name: Routes.payments,
+          name: Routes.age,
           path: 'last-login',
           builder: (context, state) => AgePage(),
         ),
