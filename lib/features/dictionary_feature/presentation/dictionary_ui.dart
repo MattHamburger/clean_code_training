@@ -1,3 +1,4 @@
+import 'package:clean_code_training/features/dictionary_feature/model/dictionary_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class DictionaryPage extends StatelessWidget {
@@ -9,8 +10,14 @@ class DictionaryPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Word Meaning'),
         ),
-        body: const Center(
-          child: Text("Dictionary UI"),
+        body: Center(
+          child: Column(
+            children: const [
+              TextField(
+                decoration: InputDecoration(labelText: "Enter a word", ),
+              ),
+            ],
+          ),
         ));
   }
 }

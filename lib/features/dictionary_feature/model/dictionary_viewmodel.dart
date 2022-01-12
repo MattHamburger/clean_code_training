@@ -3,9 +3,8 @@ import 'package:flutter/cupertino.dart';
 
 class DictionaryViewModel extends ViewModel{
 
-
-  final String userInputWord;
-  final ValueChanged<String> meaning;
+  final ValueChanged<String> userInputWord;
+  final String meaning;
 
   DictionaryViewModel(this.userInputWord, this.meaning);
 
