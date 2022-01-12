@@ -26,17 +26,17 @@ final router = AppRouter<Routes>(
       routes: [
         AppRoute(
           name: Routes.age,
-          path: 'last-login',
+          path: 'age',
           builder: (context, state) => const AgePage(),
         ),
         AppRoute(
           name: Routes.dictionary,
-          path: 'last-login',
+          path: 'dictionary',
           builder: (context, state) => const DictionaryPage(),
         ),
         AppRoute(
           name: Routes.payment,
-          path: 'last-login',
+          path: 'payment',
           builder: (context, state) => const PaymentsPage(),
         ),
       ],

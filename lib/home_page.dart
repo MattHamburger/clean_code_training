@@ -15,10 +15,23 @@ class HomePage extends StatelessWidget {
         children: [
           ListTile(
             leading: const Icon(Icons.filter_1),
-            title: const Text('age feature'),
-            onTap: () => router.to(Routes.age),
+            title: const Text('Age feature'),
+            onTap: () => router.to(Routes.home),
           ),
           const Divider(),
+          ListTile(
+            leading: const Icon(Icons.filter_1),
+            title: const Text('Dictionary feature'),
+            onTap: () => router.to(Routes.dictionary),
+          ),
+          const Divider(),
+
+          ListTile(
+            leading: const Icon(Icons.filter_1),
+            title: const Text('Payment feature'),
+            onTap: () => router.to(Routes.payment),
+          ),
+
 
         ],
       ),
