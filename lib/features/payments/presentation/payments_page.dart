@@ -23,14 +23,14 @@ class PaymentsUI extends UI<PaymentsFormViewModel> {
           ),
         ],
       ),
-    );
-  }
+    ); }
 
   @override
   Presenter<ViewModel, Output, UseCase<Entity>> create(
       PresenterBuilder<PaymentsFormViewModel> builder) {
     // TODO: implement create
-    throw UnimplementedError();
+
+ throw UnimplementedError();
   }
 }
 
