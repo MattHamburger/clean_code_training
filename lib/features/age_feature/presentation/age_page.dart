@@ -20,12 +20,14 @@ class AgeUI extends UI<AgeViewModel> {
   Widget build(BuildContext context, viewModel) {
     return Scaffold(
       body: Column(
+        key: Key('list'),
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('Enter Your Name'),
           const TextField(
-              // onChanged: viewModel.name,
-              ),
+            key: Key('nameInput'),
+            // onChanged: viewModel.name,
+          ),
           ElevatedButton(onPressed: () {}, child: const Text("Calculate Age"))
         ],
       ),
@@ -47,11 +49,12 @@ class AgePresenter extends Presenter<AgeViewModel, Output, UseCase> {
   AgeViewModel createViewModel(UseCase<Entity> useCase, Output output) {
     return AgeViewModel(age: "", name: (name) {});
   }
+
   @override
   subscribe(ref) => EmptyOutput();
 }
+
 class EmptyOutput extends Output {
   @override
   List<Object?> get props => [];
 }
-

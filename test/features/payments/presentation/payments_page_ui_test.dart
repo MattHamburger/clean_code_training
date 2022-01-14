@@ -1,7 +1,6 @@
 import 'package:clean_code_training/features/payments/presentation/payments_page.dart';
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_code_training/routes.dart';
-import 'package:clean_framework/clean_framework.dart';
 import 'package:clean_framework/clean_framework_tests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
