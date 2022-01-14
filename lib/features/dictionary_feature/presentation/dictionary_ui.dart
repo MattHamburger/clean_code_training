@@ -1,4 +1,3 @@
-import 'package:clean_code_training/features/age_feature/presentation/age_page.dart';
 import 'package:clean_code_training/features/dictionary_feature/model/dictionary_viewmodel.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +23,17 @@ class DictionaryUI extends UI<DictionaryViewModel> {
           title: const Text('Word Meaning'),
         ),
         body: Center(
-          child: Column(
-            children: [
-              TextField(
-                decoration: const InputDecoration(labelText: "Enter a word"),
-                onChanged: viewModel.userInputWord,
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  decoration: const InputDecoration(labelText: "Enter a word"),
+                  onChanged: viewModel.userInputWord,
+                ),
+              ],
+            ),
           ),
         ));
   }
