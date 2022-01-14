@@ -12,23 +12,22 @@ void main() {
   testWidgets('Age Form UI success', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
-        home: Text('test'),
+        home: Text('run test'),
       ),
     );
 
     await tester.pumpAndSettle();
 
     expect(find.byType(Text), findsOneWidget);
-    expect(find.text('test'), findsOneWidget);
+    expect(find.text('run test'), findsOneWidget);
   });
 
   uiTest(
-    'AgeUI unit test',
+    'Age UI unit test',
     builder: () => AgeUI(),
     verify: (tester) async {
       expect(find.text('Enter Your Name'), findsOneWidget);
-      expect(find.text('Calculate Age'),findsOneWidget);
+      expect(find.text('Calculate Age'), findsOneWidget);
     },
   );
-
 }
