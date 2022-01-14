@@ -8,3 +8,4 @@ ProvidersContext get providersContext => _providersContext;
 
 final paymentsFormUseCaseProvider = UseCaseProvider((_) => UseCaseFake());
 final ageUseCaseProvider = UseCaseProvider((_)=>UseCaseFake());
+final dictionaryUseCaseProvider = UseCaseProvider((_) => UseCaseFake());

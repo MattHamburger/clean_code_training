@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 class DictionaryViewModel extends ViewModel{
 
   final ValueChanged<String> userInputWord;
-  final String meaning;
 
-  DictionaryViewModel(this.userInputWord, this.meaning);
+
+  DictionaryViewModel({required this.userInputWord});
 
   @override
   // TODO: implement props
