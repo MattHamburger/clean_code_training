@@ -1,4 +1,5 @@
 import 'package:clean_code_training/features/payments/model/payments_form_viewmodel.dart';
+import 'package:clean_code_training/providers.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,8 @@ class PaymentsPage extends StatelessWidget {
 }
 
 class PaymentsUI extends UI<PaymentsFormViewModel> {
+  PaymentsUI({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, viewModel) {
     return Scaffold(
@@ -19,6 +22,7 @@ class PaymentsUI extends UI<PaymentsFormViewModel> {
         children: [
           const Text('Account Number'),
           TextField(
+            key: const Key('account_number_input'),
             onChanged: viewModel.accountNumberInput,
           ),
         ],
@@ -29,26 +33,28 @@ class PaymentsUI extends UI<PaymentsFormViewModel> {
   @override
   Presenter<ViewModel, Output, UseCase<Entity>> create(
       PresenterBuilder<PaymentsFormViewModel> builder) {
-    // TODO: implement create
-    throw UnimplementedError();
+    return PaymentsFormPresenter(builder: builder);
   }
 }
 
-// class PaymentsFormPresenter extends Presenter<PaymentsFormViewModel, Output, UseCase>{
-//   PaymentsFormPresenter() : super(provider: Providerbuilder: (_){});
+class PaymentsFormPresenter
+    extends Presenter<PaymentsFormViewModel, Output, UseCase> {
+  PaymentsFormPresenter({
+    required PresenterBuilder<PaymentsFormViewModel> builder,
+  }) : super(builder: builder, provider: paymentsFormUseCaseProvider);
 
-//   @override
-//   PaymentsFormViewModel createViewModel(UseCase<Entity> useCase, Output output) {
-//     // TODO: implement createViewModel
-//     throw UnimplementedError();
-//   }
-// }
+  @override
+  PaymentsFormViewModel createViewModel(
+      UseCase<Entity> useCase, Output output) {
+    return PaymentsFormViewModel(accountNumberInput: (number) {});
+  }
 
-// class PresenterDummy extends Presenter {
-//   PresenterDummy() : super({required PresenterBuilder<PaymentsFormViewModel> builder});
+  @override
+  subscribe(ref) => EmptyOutput();
+}
 
-// @override
-//   LastLoginUIOutput subscribe(_) =>
-//       LastLoginUIOutput(lastLogin: DateTime.parse('2000-12-31'));
-
-// }
+// This is only required temporarily
+class EmptyOutput extends Output {
+  @override
+  List<Object?> get props => [];
+}

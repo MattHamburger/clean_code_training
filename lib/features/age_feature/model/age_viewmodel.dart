@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 
 class AgeViewModel extends ViewModel{
   final ValueChanged<String> name;
-
-  AgeViewModel(this.name, this.age);
-
   final String age;
-
+  AgeViewModel({required this.name, required this.age});
 
   @override
   List<Object?> get props => [];
