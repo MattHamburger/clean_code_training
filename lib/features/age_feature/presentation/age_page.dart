@@ -47,11 +47,12 @@ class AgePresenter extends Presenter<AgeViewModel, Output, UseCase> {
   AgeViewModel createViewModel(UseCase<Entity> useCase, Output output) {
     return AgeViewModel(age: "", name: (name) {});
   }
+
   @override
   subscribe(ref) => EmptyOutput();
 }
+
 class EmptyOutput extends Output {
   @override
   List<Object?> get props => [];
 }
-

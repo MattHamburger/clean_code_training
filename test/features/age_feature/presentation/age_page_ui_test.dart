@@ -16,18 +16,24 @@ void main() {
       ),
     );
 
+
     await tester.pumpAndSettle();
 
     expect(find.byType(Text), findsOneWidget);
     expect(find.text('run test'), findsOneWidget);
+
   });
 
   uiTest(
     'Age UI unit test',
     builder: () => AgeUI(),
-    verify: (tester) async {
+    verify: (WidgetTester tester) async {
+
       expect(find.text('Enter Your Name'), findsOneWidget);
       expect(find.text('Calculate Age'), findsOneWidget);
+
+
+
     },
   );
 }
