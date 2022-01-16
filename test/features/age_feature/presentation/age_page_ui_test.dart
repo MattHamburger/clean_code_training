@@ -24,12 +24,21 @@ void main() {
 
   });
 
+  final listFinder = find.byKey(Key('list'));
+
   uiTest(
     'Age UI unit test',
     builder: () => AgeUI(),
     verify: (WidgetTester tester) async {
 
       expect(find.text('Enter Your Name'), findsOneWidget);
+      expect(find.byKey(Key('nameInput')), findsOneWidget);
+
+      expect(
+          find.descendant(
+              of: listFinder, matching: find.text('Enter Your Name')),
+          findsOneWidget);
+
       expect(find.text('Calculate Age'), findsOneWidget);
 
 
