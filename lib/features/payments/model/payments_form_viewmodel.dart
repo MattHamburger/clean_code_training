@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 
 class PaymentsFormViewModel extends ViewModel {
   final ValueChanged<String> accountNumberInput;
-  final String tempAccountNumber;
+  final Map<String, String> accountsList;
+  final String selectedAccount;
 
   PaymentsFormViewModel(
-      {required this.accountNumberInput, required this.tempAccountNumber});
+      {required this.accountNumberInput,
+      required this.accountsList,
+      required this.selectedAccount});
 
   @override
-  List<Object?> get props => [tempAccountNumber];
+  List<Object?> get props => [accountsList, selectedAccount];
 }
