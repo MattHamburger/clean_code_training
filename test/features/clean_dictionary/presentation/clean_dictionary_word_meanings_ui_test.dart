@@ -1,4 +1,4 @@
-import 'package:clean_code_training/features/clean_dictionary/presentation/dictionary_word_meanings_ui.dart';
+import 'package:clean_code_training/features/clean_dictionary/presentation/clean_dictionary_word_meanings_ui.dart';
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_code_training/routes.dart';
 import 'package:clean_framework/clean_framework_tests.dart';

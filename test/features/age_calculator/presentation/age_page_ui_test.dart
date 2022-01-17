@@ -1,4 +1,5 @@
-import 'package:clean_code_training/features/age_feature/presentation/age_page.dart';
+
+import 'package:clean_code_training/features/age_calculator/presentation/age_calculator_page.dart';
 
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_code_training/routes.dart';
@@ -16,20 +17,23 @@ void main() {
       ),
     );
 
+
     await tester.pumpAndSettle();
 
     expect(find.byType(Text), findsOneWidget);
     expect(find.text('run test'), findsOneWidget);
+
   });
 
   final listFinder = find.byKey(Key('list'));
 
   uiTest(
     'Age UI unit test',
-    builder: () => AgeUI(),
-    verify: (tester) async {
+    builder: () => AgeCalculatorUI(),
+    verify: (WidgetTester tester) async {
+
       expect(find.text('Enter Your Name'), findsOneWidget);
-      expect(find.byKey(Key('nameInput')), findsOneWidget);
+      expect(find.byKey(const Key('nameInput')), findsOneWidget);
 
       expect(
           find.descendant(
@@ -37,6 +41,9 @@ void main() {
           findsOneWidget);
 
       expect(find.text('Calculate Age'), findsOneWidget);
+
+
+
     },
   );
 }

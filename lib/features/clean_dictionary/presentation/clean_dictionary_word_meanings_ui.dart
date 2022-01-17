@@ -1,7 +1,7 @@
 import 'package:clean_code_training/features/clean_dictionary/model/clean_dictionary_viewmodel.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
-import 'dictionary_ui.dart';
+import 'clean_dictionary_ui.dart';
 
 class CleanDictionaryWordMeaningsPage extends StatelessWidget {
   const CleanDictionaryWordMeaningsPage({Key? key}) : super(key: key);
