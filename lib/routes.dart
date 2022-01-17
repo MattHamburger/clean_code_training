@@ -1,21 +1,13 @@
-
-import 'package:clean_code_training/features/dictionary_feature/presentation/dictionary_ui.dart';
+import 'package:clean_code_training/features/clean_dictionary/presentation/dictionary_word_meanings_ui.dart';
 import 'package:clean_code_training/features/payments/presentation/payments_page.dart';
 import 'package:clean_code_training/home_page.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
 import 'features/age_feature/presentation/age_page.dart';
+import 'features/clean_dictionary/presentation/dictionary_ui.dart';
 
-
-
-
-enum Routes {
-  home,
-  age,
-  payment,
-  dictionary
-}
+enum Routes { home, age, payment, dictionary, dictionaryMeanings }
 
 final router = AppRouter<Routes>(
   routes: [
@@ -30,10 +22,16 @@ final router = AppRouter<Routes>(
           builder: (context, state) => const AgePage(),
         ),
         AppRoute(
-          name: Routes.dictionary,
-          path: 'dictionary',
-          builder: (context, state) => const DictionaryPage(),
-        ),
+            name: Routes.dictionary,
+            path: 'dictionary',
+            builder: (context, state) => const CleanDictionaryPage(),
+            routes: [
+              AppRoute(
+                  name: Routes.dictionaryMeanings,
+                  path: 'dictionaryMeanings',
+                  builder: (context, state) => const CleanDictionaryWordMeaningsPage()
+              )
+            ]),
         AppRoute(
           name: Routes.payment,
           path: 'payment',
