@@ -4,16 +4,28 @@ import 'package:clean_framework/clean_framework_providers.dart';
 class PaymentsUseCase extends UseCase<PaymentsEntity> {
   PaymentsUseCase()
       : super(entity: PaymentsEntity(), outputFilters: {
-          PaymentsFormUIOutput: (PaymentsEntity entity) =>
-              PaymentsFormUIOutput(number: entity.accountNumber)
+          PaymentsFormUIOutput: (PaymentsEntity entity) => PaymentsFormUIOutput(
+              accounts: entity.accounts,
+              selectedAccount: entity.selectedAccount)
         });
+
+  Future<void> onPaymentsFormLoad() async {
+    entity = entity.merge(
+        accounts: const {'12345': 'Personal Savings', '09876': 'Credit Card'});
+  }
+
+  Future<void> onSelectAccount(String accountNumber) async {
+    entity = entity.merge(selectedAccount: accountNumber);
+  }
 }
 
 class PaymentsFormUIOutput extends Output {
-  final String number;
+  final Map<String, String> accounts;
 
-  PaymentsFormUIOutput({required this.number});
+  final String selectedAccount;
+
+  PaymentsFormUIOutput({required this.accounts, required this.selectedAccount});
 
   @override
-  List<Object?> get props => [number];
+  List<Object?> get props => [accounts, selectedAccount];
 }
