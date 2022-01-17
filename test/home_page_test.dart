@@ -1,4 +1,4 @@
-import 'package:clean_code_training/features/age_feature/presentation/age_page.dart';
+import 'package:clean_code_training/features/age_calculator/presentation/age_calculator_page.dart';
 import 'package:clean_code_training/home_page.dart';
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_code_training/routes.dart';
@@ -64,7 +64,7 @@ void main() {
         await tester.tap(ageTileFinder);
         await tester.pumpAndSettle();
 
-        expect(find.byType(AgePage), findsOneWidget);
+        expect(find.byType(AgeCalculatorPage), findsOneWidget);
       },
     );
 
@@ -80,7 +80,7 @@ void main() {
         await tester.tap(dictionaryTileFinder);
         await tester.pumpAndSettle();
 
-        expect(find.byType(AgePage), findsOneWidget);
+        expect(find.byType(AgeCalculatorPage), findsOneWidget);
       },
     );
     testWidgets(
@@ -94,7 +94,7 @@ void main() {
         await tester.tap(paymentsTileFinder);
         await tester.pumpAndSettle();
 
-        expect(find.byType(AgePage), findsOneWidget);
+        expect(find.byType(AgeCalculatorPage), findsOneWidget);
       },
     );
 

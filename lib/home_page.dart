@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.filter_1),
             title: const Text('Age feature'),
-            onTap: () => router.to(Routes.age),
+            onTap: () => router.to(Routes.ageCalculator),
           ),
           const Divider(),
           ListTile(

@@ -1,21 +1,13 @@
-
+import 'package:clean_code_training/features/age_calculator/presentation/age_display_page.dart';
 import 'package:clean_code_training/features/dictionary_feature/presentation/dictionary_ui.dart';
 import 'package:clean_code_training/features/payments/presentation/payments_page.dart';
 import 'package:clean_code_training/home_page.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
-import 'features/age_feature/presentation/age_page.dart';
+import 'features/age_calculator/presentation/age_calculator_page.dart';
 
-
-
-
-enum Routes {
-  home,
-  age,
-  payment,
-  dictionary
-}
+enum Routes { home, ageCalculator, ageDisplay, payment, dictionary }
 
 final router = AppRouter<Routes>(
   routes: [
@@ -25,10 +17,14 @@ final router = AppRouter<Routes>(
       builder: (context, state) => const HomePage(),
       routes: [
         AppRoute(
-          name: Routes.age,
-          path: 'age',
-          builder: (context, state) => const AgePage(),
+          name: Routes.ageCalculator,
+          path: 'ageCalculator',
+          builder: (context, state) => const AgeCalculatorPage(),
         ),
+        AppRoute(
+            name: Routes.ageDisplay,
+            path: 'ageDisplay',
+            builder: (context, state) => const AgeDisplayPage()),
         AppRoute(
           name: Routes.dictionary,
           path: 'dictionary',
