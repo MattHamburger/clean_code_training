@@ -6,6 +6,7 @@ import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
 
 import '../../../providers.dart';
+import 'clean_dictionary_presenter.dart';
 
 
 
@@ -54,15 +55,4 @@ class CleanDictionaryUI extends UI<CleanDictionaryViewModel> {
   }
 }
 
-class CleanDictionaryPresenter extends Presenter<CleanDictionaryViewModel,
-    CleanDictionaryUIOutput, CleanDictionaryUseCase> {
-  CleanDictionaryPresenter({required PresenterBuilder<CleanDictionaryViewModel> builder})
-      : super(builder: builder, provider: dictionaryUseCaseProvider);
 
-  @override
-  CleanDictionaryViewModel createViewModel(
-      CleanDictionaryUseCase useCase, CleanDictionaryUIOutput output) {
-    return CleanDictionaryViewModel(
-        userInputWord: (word) {}, meanings: output.wordMeanings);
-  }
-}
