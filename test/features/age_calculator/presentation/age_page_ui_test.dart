@@ -25,7 +25,7 @@ void main() {
 
   });
 
-  final listFinder = find.byKey(Key('list'));
+  final listFinder = find.byKey(const Key('list'));
 
   uiTest(
     'Age UI unit test',
