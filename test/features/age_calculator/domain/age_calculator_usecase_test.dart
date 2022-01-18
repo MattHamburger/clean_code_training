@@ -10,11 +10,13 @@ void main() {
 
     await useCase.onAgeLoad();
     currentOutput = useCase.getOutput<AgeUIOutput>();
+    expect(currentOutput.userAge, isNotEmpty);
     expect(currentOutput.userAge, '50');
 
 
     await useCase.onAgeChange('75');
     currentOutput = useCase.getOutput<AgeUIOutput>();
+    expect(currentOutput.userAge, isNotEmpty);
     expect(currentOutput.userAge, '75');
   });
 }
