@@ -8,6 +8,14 @@ class AgeCalculatorUseCase extends UseCase<AgeCalculatorEntity> {
           AgeUIOutput: (AgeCalculatorEntity entity) =>
               AgeUIOutput(userAge: entity.userAge)
         });
+
+  Future<void> onAgeLoad() async {
+    entity = entity.merge(userAge: '50');
+  }
+
+  Future<void> onAgeChange(String changedAge) async {
+    entity = entity.merge(userAge: changedAge);
+  }
 }
 
 class AgeUIOutput extends Output {

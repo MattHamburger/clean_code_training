@@ -1,10 +1,11 @@
-import 'package:clean_code_training/features/age_calculator/domain/age_calculator_usecase.dart';
+
 import 'package:clean_code_training/features/age_calculator/model/age_calculator_viewmodel.dart';
 import 'package:clean_code_training/routes.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
 
-import '../../../providers.dart';
+
+import 'age_calculator_presenter.dart';
 
 class AgeCalculatorPage extends StatelessWidget {
   const AgeCalculatorPage({Key? key}) : super(key: key);
@@ -44,14 +45,3 @@ class AgeCalculatorUI extends UI<AgeCalculatorViewModel> {
   }
 }
 
-class AgePresenter extends Presenter<AgeCalculatorViewModel, AgeUIOutput,
-    AgeCalculatorUseCase> {
-  AgePresenter({required PresenterBuilder<AgeCalculatorViewModel> builder})
-      : super(builder: builder, provider: ageUseCaseProvider);
-
-  @override
-  AgeCalculatorViewModel createViewModel(
-      AgeCalculatorUseCase useCase, AgeUIOutput output) {
-    return AgeCalculatorViewModel(userAge: output.userAge, userName: (name) {});
-  }
-}
