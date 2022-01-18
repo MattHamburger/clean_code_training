@@ -21,10 +21,36 @@ void main() {
   });
 
   uiTest(
-    'AddMachineUI unit test',
+    'Payments Form integration test',
     builder: () => PaymentsUI(),
     verify: (tester) async {
+      await tester.pumpAndSettle();
+
       expect(find.text('Account Number'), findsOneWidget);
+      final drop = find.byKey(const Key('accounts_dropdown'));
+      expect(drop, findsOneWidget);
+
+      expect(
+          find.descendant(
+              of: find.byKey(const Key('selection')),
+              matching: find.text('12345')),
+          findsOneWidget);
+
+      await tester.tap(drop);
+      await tester.pumpAndSettle();
+
+      final creditCardOption = find.byKey(const Key('09876')).last;
+      expect(creditCardOption, findsOneWidget);
+
+      await tester.tap(creditCardOption);
+      await tester.pumpAndSettle();
+
+      //debugDumpApp();
+      expect(
+          find.descendant(
+              of: find.byKey(const Key('selection')),
+              matching: find.text('09876')),
+          findsOneWidget);
     },
   );
 }

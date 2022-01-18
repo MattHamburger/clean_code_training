@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:math';
-
 import 'package:clean_code_training/features/payments/domain/payments_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 

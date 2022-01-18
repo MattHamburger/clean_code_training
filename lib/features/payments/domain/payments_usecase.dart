@@ -11,7 +11,8 @@ class PaymentsUseCase extends UseCase<PaymentsEntity> {
 
   Future<void> onPaymentsFormLoad() async {
     entity = entity.merge(
-        accounts: const {'12345': 'Personal Savings', '09876': 'Credit Card'});
+        accounts: const {'12345': 'Personal Savings', '09876': 'Credit Card'},
+        selectedAccount: '12345');
   }
 
   Future<void> onSelectAccount(String accountNumber) async {

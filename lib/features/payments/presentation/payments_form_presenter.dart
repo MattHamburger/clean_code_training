@@ -12,9 +12,15 @@ class PaymentsFormPresenter extends Presenter<PaymentsFormViewModel,
   @override
   PaymentsFormViewModel createViewModel(useCase, PaymentsFormUIOutput output) {
     return PaymentsFormViewModel(
-        selectedAccount: '',
-        accountsList: output.accounts,
-        accountNumberInput: (number) {});
+        selectedAccount: output.selectedAccount,
+        accountsList: output.accounts.isEmpty
+            ? {
+                '': 'No accounts',
+              }
+            : output.accounts,
+        accountNumberInput: (account) {
+          useCase.onSelectAccount(account);
+        });
   }
 
   @override

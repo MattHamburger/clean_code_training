@@ -18,15 +18,48 @@ class PaymentsUI extends UI<PaymentsFormViewModel> {
 
   @override
   Widget build(BuildContext context, viewModel) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const Text('Account Number'),
-          TextField(
-            key: const Key('account_number_input'),
-            onChanged: viewModel.accountNumberInput,
+    final dropDownItems = viewModel.accountsList
+        .map(
+          (account, name) => MapEntry(
+            name,
+            DropdownMenuItem<String>(
+                key: Key(account),
+                child: Text(name),
+                value: account,
+                onTap: () {
+                  viewModel.accountNumberInput(account);
+                }),
           ),
-        ],
+        )
+        .values
+        .toList();
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Text('Account Number'),
+            const SizedBox(
+              height: 200,
+            ),
+            Center(
+              child: DropdownButton(
+                  key: const Key('accounts_dropdown'),
+                  items: dropDownItems,
+                  value: viewModel.selectedAccount,
+                  onChanged: (selection) {}),
+            ),
+            const SizedBox(
+              height: 200,
+            ),
+            Container(
+              key: const Key('selection'),
+              child: Text(
+                viewModel.selectedAccount,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
