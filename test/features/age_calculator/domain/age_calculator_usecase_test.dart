@@ -6,17 +6,22 @@ void main() {
   test('AgeUseCase initial state and actions', () async {
     final useCase = AgeCalculatorUseCase();
     var currentOutput = useCase.getOutput<AgeUIOutput>();
-    expect(currentOutput, AgeUIOutput(userAge: ''));
+    expect(currentOutput,
+        AgeUIOutput(userAge: 0, ageChecked: const {}, finalStatement: ''));
 
     await useCase.onAgeLoad();
     currentOutput = useCase.getOutput<AgeUIOutput>();
-    expect(currentOutput.userAge, isNotEmpty);
-    expect(currentOutput.userAge, '50');
 
+    expect(currentOutput.userAge, 50);
+    expect(currentOutput.ageChecked, const {
+      'correct': "The age is correct",
+      'incorrect': 'The age is incorrect'
+    });
 
-    await useCase.onAgeChange('75');
+    await useCase.onAgeChange("75","correct");
     currentOutput = useCase.getOutput<AgeUIOutput>();
-    expect(currentOutput.userAge, isNotEmpty);
-    expect(currentOutput.userAge, '75');
+
+    expect(currentOutput.userAge, 75);
+    expect(currentOutput.finalStatement,"correct");
   });
 }

@@ -12,8 +12,19 @@ class AgePresenter extends Presenter<AgeCalculatorViewModel, AgeUIOutput,
   @override
   AgeCalculatorViewModel createViewModel(
       AgeCalculatorUseCase useCase, AgeUIOutput output) {
-    return AgeCalculatorViewModel(userAge: output.userAge, userName: (name) {});
+    return AgeCalculatorViewModel(
+        finalAgeChecked: (age) {
+          useCase.onAgeChange(age, output.finalStatement);
+        },
+        userAge: output.userAge.toString(),
+        ageChecked: output.ageChecked.isEmpty
+            ? {
+                '': 'No statement',
+              }
+            : output.ageChecked,
+        finalStatement: output.finalStatement);
   }
+
   @override
   void onLayoutReady(context, useCase) {
     useCase.onAgeLoad();
