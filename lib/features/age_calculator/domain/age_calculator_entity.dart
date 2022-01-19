@@ -2,18 +2,19 @@ import 'package:clean_framework/clean_framework_providers.dart';
 
 class AgeCalculatorEntity extends Entity {
   final String userName;
-  final String userAge;
+  final int userAge;
 
-  AgeCalculatorEntity({this.userName = '', this.userAge = ''});
+  AgeCalculatorEntity({this.userName = '', this.userAge = 0});
 
   @override
   List<Object?> get props => [userAge];
 
   AgeCalculatorEntity merge({
     String? userName,
-    String? userAge,
+    int? userAge,
   }) =>
       AgeCalculatorEntity(
-          userName: userName ?? this.userName,
-          userAge: userAge ?? this.userAge);
+        userName: userName ?? this.userName,
+        userAge: userAge ?? this.userAge,
+      );
 }

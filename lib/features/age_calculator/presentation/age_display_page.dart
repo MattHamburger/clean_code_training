@@ -11,7 +11,7 @@ class AgeDisplayPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: AgeDisplayUI());
+    return Scaffold(body: Center(child: AgeDisplayUI()));
   }
 }
 
@@ -20,10 +20,26 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
 
   @override
   Widget build(BuildContext context, AgeCalculatorViewModel viewModel) {
-    return  Material(
-      child: Center(
-          child: Text("Your age is ${viewModel.userAge}"),
-        ),
+    return Material(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Your age is ${viewModel.userAge}"),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text("Is this the correct age?"),
+          const ListTile(
+            title: Text("correct"),
+
+          ),
+          const ListTile(
+            title: Text("incorrect"),
+
+          ),
+
+        ],
+      ),
     );
   }
 

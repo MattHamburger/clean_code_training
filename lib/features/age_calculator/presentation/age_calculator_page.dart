@@ -1,9 +1,7 @@
-
 import 'package:clean_code_training/features/age_calculator/model/age_calculator_viewmodel.dart';
 import 'package:clean_code_training/routes.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 import 'package:flutter/material.dart';
-
 
 import 'age_calculator_presenter.dart';
 
@@ -44,4 +42,3 @@ class AgeCalculatorUI extends UI<AgeCalculatorViewModel> {
     return AgePresenter(builder: builder);
   }
 }
-

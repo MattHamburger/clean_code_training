@@ -1,4 +1,4 @@
-import 'package:clean_code_training/features/age_calculator/domain/age_calculator_entity.dart';
+
 import 'package:clean_code_training/features/age_calculator/presentation/age_display_page.dart';
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_code_training/routes.dart';
@@ -24,10 +24,11 @@ void main() {
   });
 
   uiTest(
-    'Age display UI unit test',
+    'Age display integration test',
     builder: () => AgeDisplayUI(),
     verify: (WidgetTester tester) async {
       expect(find.text('Your age is 50'), findsOneWidget);
+      expect(find.text('Is this the correct age?'),findsOneWidget);
     },
   );
 }

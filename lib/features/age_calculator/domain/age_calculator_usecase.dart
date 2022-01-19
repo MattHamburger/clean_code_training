@@ -10,18 +10,19 @@ class AgeCalculatorUseCase extends UseCase<AgeCalculatorEntity> {
         });
 
   Future<void> onAgeLoad() async {
-    entity = entity.merge(userAge: '50');
+    entity = entity.merge(userAge: 50);
   }
 
-  Future<void> onAgeChange(String changedAge) async {
+  Future<void> onAgeChange(int changedAge) async {
     entity = entity.merge(userAge: changedAge);
   }
 }
 
 class AgeUIOutput extends Output {
-  final String userAge;
+  final int userAge;
 
-  AgeUIOutput({required this.userAge});
+
+  AgeUIOutput({required this.userAge, });
 
   @override
   List<Object?> get props => [userAge];
