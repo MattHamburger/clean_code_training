@@ -22,6 +22,12 @@ void main(){
 
 
   final listFinder = find.byKey(const Key('ListTileKey'));
+  final dialogFinder1 = find.byKey(const Key("DialogKey 1"));
+  final dialogFinder2 = find.byKey(const Key("DialogKey 2"));
+  final firstListTileFinder = find.text("Definition 1: make a systematic list of (items of the same type)");
+  final secondListTileFinder = find.text("Definition 2: a complete list of items, typically one in alphabetical or other systematic order");
+  final dialogText1Finder = find.text("It will be some time before the collection is fully catalogued.");
+  final dialogText2Finder = find.text("He also made a catalogue of the manuscripts at Anchin and annotated many of them.");
 
   uiTest(
     'Dictionary Word Meanings Page UI Unit test',
@@ -31,12 +37,22 @@ void main(){
 
       expect(
           find.descendant(
-              of: listFinder, matching: find.text("Definition 1: make a systematic list of (items of the same type)")),
+              of: listFinder, matching: firstListTileFinder),
           findsOneWidget);
       expect(
           find.descendant(
-              of: listFinder, matching: find.text("Definition 2: a complete list of items, typically one in alphabetical or other systematic order")),
+              of: listFinder, matching: secondListTileFinder),
           findsOneWidget);
+      await tester.tap(firstListTileFinder, warnIfMissed: false);
+      await tester.pumpAndSettle();
+      expect(dialogFinder1, findsOneWidget);
+      expect(find.descendant(of: dialogFinder1, matching: dialogText1Finder), findsOneWidget);
+
+
+      // await tester.tap(secondListTileFinder, warnIfMissed: false);
+      // await tester.pump();
+      // expect(dialogFinder2, findsOneWidget);
+      // expect(find.descendant(of: dialogFinder2, matching: dialogText2Finder, skipOffstage: true), findsOneWidget);
       },
   );
 
