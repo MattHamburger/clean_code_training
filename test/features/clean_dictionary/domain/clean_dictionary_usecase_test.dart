@@ -5,7 +5,7 @@ void main(){
   test('Clean Dictionary UseCase Test', () async{
     final useCase = CleanDictionaryUseCase();
     var currentOutput = useCase.getOutput<CleanDictionaryUIOutput>();
-    expect(currentOutput, CleanDictionaryUIOutput(wordMeanings: const []));
+    expect(currentOutput, CleanDictionaryUIOutput(wordMeanings: const [], wordExamples: const []));
 
     await useCase.onDictionaryLoad();
     currentOutput = useCase.getOutput<CleanDictionaryUIOutput>();
@@ -19,5 +19,6 @@ void main(){
     currentOutput = useCase.getOutput<CleanDictionaryUIOutput>();
     expect(currentOutput.wordMeanings.first, "relating to or done with the hands");
     expect(currentOutput.wordMeanings.last, "set of instructions");
+
   });
 }

@@ -30,7 +30,14 @@ class CleanDictionaryWordMeaningsUI extends UI<CleanDictionaryViewModel> {
                   key: const Key("ListTileKey"),
                   title: Text('Definition ${index+1}: ${viewModel.meanings[index]}'),
                   leading: const Icon(Icons.library_books_sharp),
-                  onTap: () => {},
+                  onTap: (){
+                    showDialog(context: context, builder: (BuildContext context){
+                      return Dialog(
+                          key: Key("DialogKey ${index+1}"),
+                          child: Text(viewModel.examples[index]));
+                    } );
+                  }
+
                 ),
               );
             },
@@ -38,6 +45,8 @@ class CleanDictionaryWordMeaningsUI extends UI<CleanDictionaryViewModel> {
             itemCount: viewModel.meanings.length,
           ),
     );
+
+
   }
 
   @override
