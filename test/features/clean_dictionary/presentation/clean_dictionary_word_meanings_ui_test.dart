@@ -22,6 +22,7 @@ void main(){
 
 
   final listFinder = find.byKey(const Key('ListTileKey'));
+  final switchFinder = find.byKey(const Key('SwitchKey'));
   final dialogFinder1 = find.byKey(const Key("DialogKey 1"));
   final dialogFinder2 = find.byKey(const Key("DialogKey 2"));
   final firstListTileFinder = find.text("Definition 1: make a systematic list of (items of the same type)");
@@ -43,6 +44,11 @@ void main(){
           find.descendant(
               of: listFinder, matching: secondListTileFinder),
           findsOneWidget);
+      expect(
+          find.descendant(
+              of: listFinder, matching: switchFinder),
+          findsNWidgets(2));
+
       await tester.tap(firstListTileFinder, warnIfMissed: false);
       await tester.pumpAndSettle();
       expect(dialogFinder1, findsOneWidget);

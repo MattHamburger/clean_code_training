@@ -13,9 +13,7 @@ class CleanDictionaryPresenter extends Presenter<CleanDictionaryViewModel,
   CleanDictionaryViewModel createViewModel(
       CleanDictionaryUseCase useCase, CleanDictionaryUIOutput output) {
     return CleanDictionaryViewModel(
-        userInputWord: (word) {
-          useCase.onWordChanged(word);
-        }, meanings: output.wordMeanings, examples: output.wordExamples);
+        meanings: output.wordMeanings, examples: output.wordExamples, phonetics: (bool case1){useCase.onPhoneticsRequested(case1);} , origin:(bool case1){useCase.onPhoneticsRequested(case1);} );
   }
 
   @override
@@ -23,9 +21,9 @@ class CleanDictionaryPresenter extends Presenter<CleanDictionaryViewModel,
     useCase.onDictionaryLoad();
   }
 
-  @override
-  void onOutputUpdate(context, output){
-    output.wordMeanings;
-
-  }
+  // @override
+  // void onOutputUpdate(context, output){
+  //   output.wordMeanings;
+  //
+  // }
 }

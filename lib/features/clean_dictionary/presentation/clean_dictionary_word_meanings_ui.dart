@@ -20,6 +20,8 @@ class CleanDictionaryWordMeaningsPage extends StatelessWidget {
 class CleanDictionaryWordMeaningsUI extends UI<CleanDictionaryViewModel> {
   CleanDictionaryWordMeaningsUI({Key? key}) : super(key: key);
 
+  final bool isSwitched = false;
+
   @override
   Widget build(BuildContext context, CleanDictionaryViewModel viewModel) {
     return Center(
@@ -36,7 +38,12 @@ class CleanDictionaryWordMeaningsUI extends UI<CleanDictionaryViewModel> {
                           key: Key("DialogKey ${index+1}"),
                           child: Text(viewModel.examples[index]));
                     } );
-                  }
+                  },
+                  trailing: Switch(onChanged: (bool value) {
+                   isSwitched == false? viewModel.phonetics(false) : viewModel.phonetics(true);
+                   isSwitched == true;
+                  }, value: isSwitched,
+                  key: const Key("SwitchKey"),),
 
                 ),
               );

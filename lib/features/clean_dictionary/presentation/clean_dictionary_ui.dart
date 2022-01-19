@@ -40,7 +40,6 @@ class CleanDictionaryUI extends UI<CleanDictionaryViewModel> {
             ElevatedButton(
                 onPressed: () {
                   router.to(Routes.dictionaryMeanings);
-                  viewModel.userInputWord;
                 },
                 child: const Text("Find meaning"))
           ],

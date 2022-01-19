@@ -15,7 +15,7 @@ void main(){
     expect(currentOutput.wordMeanings.first, "make a systematic list of (items of the same type)");
     expect(currentOutput.wordMeanings.last, "a complete list of items, typically one in alphabetical or other systematic order");
 
-    await useCase.onWordChanged(["relating to or done with the hands", "set of instructions"]);
+    await useCase.onPhoneticsRequested(true);
     currentOutput = useCase.getOutput<CleanDictionaryUIOutput>();
     expect(currentOutput.wordMeanings.first, "relating to or done with the hands");
     expect(currentOutput.wordMeanings.last, "set of instructions");

@@ -15,8 +15,8 @@ class CleanDictionaryUseCase extends UseCase<CleanDictionaryEntity>{
     );
   }
 
-  Future<void> onWordChanged(word) async{
-    entity = entity.merge(wordMeanings: word);
+  Future<void> onPhoneticsRequested(bool request) async{
+    entity = entity.merge(wordMeanings: request == true? ["relating to or done with the hands", "set of instructions"] : ["a pterosaur of the late Jurassic period, with a long slender head and neck and a very short tail", "the theory that life on the earth originated from microorganisms or chemical precursors of life present in outer space and able to initiate life on reaching a suitable environment"]);
   }
 
 }
@@ -24,6 +24,7 @@ class CleanDictionaryUseCase extends UseCase<CleanDictionaryEntity>{
 class CleanDictionaryUIOutput extends Output {
   final List<String> wordMeanings;
   final List<String> wordExamples;
+
 
   CleanDictionaryUIOutput({required this.wordMeanings, required this.wordExamples});
 
