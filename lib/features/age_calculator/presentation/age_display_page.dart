@@ -3,7 +3,6 @@ import 'package:clean_framework/clean_framework_providers.dart';
 
 import 'package:flutter/material.dart';
 
-
 import 'age_calculator_presenter.dart';
 
 class AgeDisplayPage extends StatelessWidget {
@@ -20,6 +19,18 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
 
   @override
   Widget build(BuildContext context, AgeCalculatorViewModel viewModel) {
+    final dropDownItems = viewModel.ageChecked
+        .map((rightGuess, statement) => MapEntry(
+            rightGuess,
+            DropdownMenuItem<String>(
+                key: Key(rightGuess),
+                child: Text(statement),
+                value: rightGuess,
+                onTap: () {
+                  viewModel.finalAgeChecked(statement);
+                }),
+          ),
+        ).values.toList();
     return Material(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,15 +40,22 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
             height: 10,
           ),
           const Text("Is this the correct age?"),
-          const ListTile(
-            title: Text("correct"),
-
+          Center(
+            child: DropdownButton(
+                key: const Key('age_dropdown'),
+                items: dropDownItems,
+                value: viewModel.finalStatement,
+                onChanged: (selection) {}),
           ),
-          const ListTile(
-            title: Text("incorrect"),
-
+          const SizedBox(
+            height: 10,
           ),
-
+          Container(
+            key: const Key('age_statement'),
+            child: Text(
+              viewModel.finalStatement,
+            ),
+          ),
         ],
       ),
     );
