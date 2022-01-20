@@ -35,13 +35,13 @@ void main() {
       expect(
           find.descendant(
               of: find.byKey(const Key('age_statement')),
-              matching: find.text('correct')),
+              matching: find.text('The age is correct')),
           findsOneWidget);
       expect(find.text('Guess Gender'), findsOneWidget);
 
       await tester.tap(ageDrop);
       await tester.pumpAndSettle();
-      final ageOption = find.byKey(const Key('incorrect')).last;
+      final ageOption = find.byKey(const Key('The age is incorrect')).last;
       expect(ageOption, findsOneWidget);
 
       await tester.tap(ageOption);
@@ -51,7 +51,7 @@ void main() {
       expect(
           find.descendant(
               of: find.byKey(const Key('age_statement')),
-              matching: find.text('incorrect')),
+              matching: find.text('The age is incorrect')),
           findsOneWidget);
     },
   );

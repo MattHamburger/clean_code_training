@@ -51,7 +51,9 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
                 key: const Key('age_dropdown'),
                 items: dropDownItems,
                 value: viewModel.finalStatement,
-                onChanged: (selection) {}),
+                onChanged: (selection) {
+                  // viewModel.finalAgeChecked(selection);
+                }),
           ),
           const SizedBox(
             height: 10,
@@ -65,8 +67,9 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
           const SizedBox(
             height: 10,
           ),
-          viewModel.finalStatement == "correct"
+          viewModel.finalStatement == "The age is correct"
               ? ElevatedButton(
+            key: const Key("guess_gender"),
                   // onPressed: () => {router.to(Routes.ageDisplay)},
                   onPressed: () => {router.to(Routes.genderGuesser)},
                   child: const Text("Guess Gender"))

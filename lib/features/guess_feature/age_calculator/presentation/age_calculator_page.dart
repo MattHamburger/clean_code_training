@@ -31,6 +31,7 @@ class AgeCalculatorUI extends UI<AgeCalculatorViewModel> {
             // onChanged: viewModel.name,
           ),
           ElevatedButton(
+            key: const Key("calculate_age"),
               onPressed: () => {router.to(Routes.ageDisplay)},
               child: const Text("Calculate Age")),
         ],

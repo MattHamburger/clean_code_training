@@ -8,7 +8,6 @@ class AgeCalculatorUseCase extends UseCase<AgeCalculatorEntity> {
           AgeUIOutput: (AgeCalculatorEntity entity) => AgeUIOutput(
               ageChecked: entity.ageChecked,
               userAge: entity.userAge,
-
               finalStatement: entity.finalStatement)
         });
 
@@ -16,10 +15,10 @@ class AgeCalculatorUseCase extends UseCase<AgeCalculatorEntity> {
     entity = entity.merge(
         userAge: 50,
         ageChecked: const {
-          'correct': "The age is correct",
-          'incorrect': 'The age is incorrect'
+          "The age is correct": 'correct',
+          'The age is incorrect': 'incorrect'
         },
-        finalStatement: "correct");
+        finalStatement: "The age is correct");
   }
 
   Future<void> onAgeChange(String finalStatement) async {

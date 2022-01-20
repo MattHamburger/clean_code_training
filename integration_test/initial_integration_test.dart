@@ -12,20 +12,12 @@ void main() {
     app.main();
     final Finder appBarTitle = find.text('Clean Code Training');
     final paymentsTile = find.byKey(const Key('payments_feature_tile'));
-
     await tester.pumpAndSettle();
-    expect(appBarTitle, findsOneWidget);
-    expect(paymentsTile, findsOneWidget);
-
+    expect(appBarTitle, findsOneWidget);expect(paymentsTile, findsOneWidget);
     await tester.tap(paymentsTile);
     await tester.pumpAndSettle();
     expect(find.text('Account Number'), findsOneWidget);
     await tester.pumpAndSettle();
-    await tester.pageBack();
-    final ageTile= find.byKey(const Key("age_feature_tile"));
-    await tester.tap(ageTile);
-    await tester.pumpAndSettle();
-    expect(find.text('Enter Your Name'), findsOneWidget);
-    await tester.pumpAndSettle();
   });
+
 }

@@ -15,12 +15,12 @@ void main() {
 
     expect(currentOutput.userAge, 50);
     expect(currentOutput.ageChecked, const {
-      'correct': "The age is correct",
-      'incorrect': 'The age is incorrect'
+      "The age is correct":'correct',
+      'The age is incorrect':'incorrect'
     });
 
-    await useCase.onAgeChange("correct");
+    await useCase.onAgeChange("The age is correct");
     currentOutput = useCase.getOutput<AgeUIOutput>();
-    expect(currentOutput.finalStatement,"correct");
+    expect(currentOutput.finalStatement,"The age is correct");
   });
 }
