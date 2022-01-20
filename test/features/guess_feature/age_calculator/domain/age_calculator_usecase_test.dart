@@ -1,5 +1,6 @@
-import 'package:clean_code_training/features/age_calculator/domain/age_calculator_usecase.dart';
 
+
+import 'package:clean_code_training/features/guess_feature/age_calculator/domain/age_calculator_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -18,10 +19,8 @@ void main() {
       'incorrect': 'The age is incorrect'
     });
 
-    await useCase.onAgeChange("75","correct");
+    await useCase.onAgeChange("correct");
     currentOutput = useCase.getOutput<AgeUIOutput>();
-
-    expect(currentOutput.userAge, 75);
     expect(currentOutput.finalStatement,"correct");
   });
 }

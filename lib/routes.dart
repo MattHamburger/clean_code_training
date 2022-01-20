@@ -1,13 +1,15 @@
 import 'package:clean_code_training/features/clean_dictionary/presentation/clean_dictionary_word_meanings_ui.dart';
+import 'package:clean_code_training/features/guess_feature/gender_guess/presentation/gender_guess_page.dart';
 import 'package:clean_code_training/features/payments/presentation/payments_page.dart';
 import 'package:clean_code_training/home_page.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
-import 'features/age_calculator/presentation/age_calculator_page.dart';
-import 'features/age_calculator/presentation/age_display_page.dart';
-import 'features/clean_dictionary/presentation/clean_dictionary_ui.dart';
 
-enum Routes { home, ageCalculator, ageDisplay, payment, dictionary, dictionaryMeanings }
+import 'features/clean_dictionary/presentation/clean_dictionary_ui.dart';
+import 'features/guess_feature/age_calculator/presentation/age_calculator_page.dart';
+import 'features/guess_feature/age_calculator/presentation/age_display_page.dart';
+
+enum Routes { home, ageCalculator,genderGuesser, ageDisplay, payment, dictionary, dictionaryMeanings }
 
 final router = AppRouter<Routes>(
   routes: [
@@ -25,6 +27,10 @@ final router = AppRouter<Routes>(
             name: Routes.ageDisplay,
             path: 'ageDisplay',
             builder: (context, state) => const AgeDisplayPage()),
+        AppRoute(
+            name: Routes.genderGuesser,
+            path: 'genderDisplay',
+            builder: (context, state) => const GenderGuessPage()),
         AppRoute(
             name: Routes.dictionary,
             path: 'dictionary',

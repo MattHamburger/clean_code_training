@@ -6,8 +6,9 @@ class AgeCalculatorUseCase extends UseCase<AgeCalculatorEntity> {
   AgeCalculatorUseCase()
       : super(entity: AgeCalculatorEntity(), outputFilters: {
           AgeUIOutput: (AgeCalculatorEntity entity) => AgeUIOutput(
-              userAge: entity.userAge,
               ageChecked: entity.ageChecked,
+              userAge: entity.userAge,
+
               finalStatement: entity.finalStatement)
         });
 
@@ -21,8 +22,8 @@ class AgeCalculatorUseCase extends UseCase<AgeCalculatorEntity> {
         finalStatement: "correct");
   }
 
-  Future<void> onAgeChange(String changedAge,String finalStatement) async {
-    entity = entity.merge(userAge: int.parse(changedAge),finalStatement: finalStatement);
+  Future<void> onAgeChange(String finalStatement) async {
+    entity = entity.merge(finalStatement: finalStatement);
   }
 }
 

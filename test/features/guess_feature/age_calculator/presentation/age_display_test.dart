@@ -1,4 +1,5 @@
-import 'package:clean_code_training/features/age_calculator/presentation/age_display_page.dart';
+
+import 'package:clean_code_training/features/guess_feature/age_calculator/presentation/age_display_page.dart';
 import 'package:clean_code_training/providers.dart';
 import 'package:clean_code_training/routes.dart';
 
@@ -36,21 +37,22 @@ void main() {
               of: find.byKey(const Key('age_statement')),
               matching: find.text('correct')),
           findsOneWidget);
+      expect(find.text('Guess Gender'), findsOneWidget);
 
       await tester.tap(ageDrop);
       await tester.pumpAndSettle();
       final ageOption = find.byKey(const Key('incorrect')).last;
       expect(ageOption, findsOneWidget);
 
-      // await tester.tap(ageOption);
-      // await tester.pumpAndSettle();
-      //
-      // //debugDumpApp();
-      // expect(
-      //     find.descendant(
-      //         of: find.byKey(const Key('age_statement')),
-      //         matching: find.text('incorrect')),
-      //     findsOneWidget);
+      await tester.tap(ageOption);
+      await tester.pumpAndSettle();
+
+      //debugDumpApp();
+      expect(
+          find.descendant(
+              of: find.byKey(const Key('age_statement')),
+              matching: find.text('incorrect')),
+          findsOneWidget);
     },
   );
 }

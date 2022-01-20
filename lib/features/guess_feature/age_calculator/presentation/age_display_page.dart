@@ -1,4 +1,6 @@
-import 'package:clean_code_training/features/age_calculator/model/age_calculator_viewmodel.dart';
+
+import 'package:clean_code_training/features/guess_feature/age_calculator/model/age_calculator_viewmodel.dart';
+import 'package:clean_code_training/routes.dart';
 import 'package:clean_framework/clean_framework_providers.dart';
 
 import 'package:flutter/material.dart';
@@ -20,17 +22,21 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
   @override
   Widget build(BuildContext context, AgeCalculatorViewModel viewModel) {
     final dropDownItems = viewModel.ageChecked
-        .map((rightGuess, statement) => MapEntry(
+        .map(
+          (rightGuess, statement) => MapEntry(
             rightGuess,
             DropdownMenuItem<String>(
                 key: Key(rightGuess),
                 child: Text(statement),
                 value: rightGuess,
                 onTap: () {
-                  viewModel.finalAgeChecked(statement);
+                  viewModel.finalAgeChecked(rightGuess);
                 }),
           ),
-        ).values.toList();
+        )
+        .values
+        .toList();
+
     return Material(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -56,6 +62,17 @@ class AgeDisplayUI extends UI<AgeCalculatorViewModel> {
               viewModel.finalStatement,
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          viewModel.finalStatement == "correct"
+              ? ElevatedButton(
+                  // onPressed: () => {router.to(Routes.ageDisplay)},
+                  onPressed: () => {router.to(Routes.genderGuesser)},
+                  child: const Text("Guess Gender"))
+              : const SizedBox(
+                  height: 10,
+                )
         ],
       ),
     );

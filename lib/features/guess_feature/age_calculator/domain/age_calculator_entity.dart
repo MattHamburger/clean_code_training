@@ -9,7 +9,7 @@ class AgeCalculatorEntity extends Entity {
       {this.ageChecked = const {}, this.userAge = 0, this.finalStatement = ''});
 
   @override
-  List<Object?> get props => [userAge, ageChecked, finalStatement];
+  List<Object?> get props => [ageChecked,userAge,finalStatement];
 
   AgeCalculatorEntity merge(
           {Map<String, String>? ageChecked,

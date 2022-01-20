@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16),
         children: [
           ListTile(
+            key: const Key('age_feature_tile'),
             leading: const Icon(Icons.filter_1),
             title: const Text('Age feature'),
             onTap: () => router.to(Routes.ageCalculator),
