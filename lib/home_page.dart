@@ -25,14 +25,12 @@ class HomePage extends StatelessWidget {
             onTap: () => router.to(Routes.dictionary),
           ),
           const Divider(),
-
           ListTile(
+            key: const Key('payments_feature_tile'),
             leading: const Icon(Icons.filter_1),
             title: const Text('Payments feature'),
             onTap: () => router.to(Routes.payment),
           ),
-
-
         ],
       ),
     );
